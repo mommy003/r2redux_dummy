@@ -1,6 +1,10 @@
 #' olkin12_13 function
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
+#' @param 
+#' @keywords 
+#' @return
+
 
   olkin12_13 = function (omat,nv) {
 

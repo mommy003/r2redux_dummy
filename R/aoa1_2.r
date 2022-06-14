@@ -1,5 +1,8 @@
   #' olkin1_2 function
-  #' @export 
+  #' @export
+  #' @param 
+  #' @keywords 
+  #' @return 
   olkin1_2 = function (omat,nv) {
 
      #aova in p158 in Olkin and Finn

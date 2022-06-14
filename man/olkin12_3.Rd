@@ -6,6 +6,9 @@
 \usage{
 olkin12_3(omat, nv)
 }
+\value{
+
+}
 \description{
 olkin12_3 function
 }
