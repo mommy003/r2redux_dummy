@@ -1,3 +1,4 @@
+#' olkin12_1 function
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm  
 

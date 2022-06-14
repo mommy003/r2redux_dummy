@@ -83,7 +83,7 @@ r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
   #source("aoa1_2.r")
   #source("aoa12_3.r")
   #source("aoa12_34.r")
-  source("aoa_beta1_2.r")
+  #  source("aoa_beta1_2.r")
   
   dat=scale(dat);omat=cor(dat)
   

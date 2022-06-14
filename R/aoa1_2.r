@@ -1,4 +1,4 @@
-
+  #' olkin1_2 function
   #' @export 
   olkin1_2 = function (omat,nv) {
 

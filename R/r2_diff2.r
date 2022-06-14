@@ -103,11 +103,11 @@
   
 
   r2_diff = function (dat,v1,v2,nv) {
-    source("aoa12_1.r")
-    source("aoa12_13.r")
-    source("aoa1_2.r")
-    source("aoa12_3.r")
-    source("aoa12_34.r")
+   # source("aoa12_1.r")
+   # source("aoa12_13.r")
+   # source("aoa1_2.r")
+   # source("aoa12_3.r")
+   # source("aoa12_34.r")
 
     dat=scale(dat);omat=cor(dat)
 
