@@ -14,7 +14,12 @@ r2_var(dat, v1, nv)
 \item{nv}{sample size}
 }
 \value{
-this function will test the null hypothesis for R2.Output from the command is the lists of outcomes.
+This function will test the null hypothesis for R2. To get the test statistics for R2(y~x[,v1])Lists of outputs are listed as follows.
+\item{rsq}{R2}
+\item{var}{Variance of R2}
+\item{r2_based_p}{P-value under the null hypothesis, i.e. R2=0}
+\item{upper_r2}{upper limit of 95\% CI for R2}
+\item{lower_r2}{lower limit of 95\% CI for R2}
 }
 \description{
 This function estimates var(R2(y~x[,v1]))
@@ -26,58 +31,55 @@ v1 indicates the ith column in the x matrix
 (v1 can be multiple values between 1 - M, see Arguments below)
 }
 \examples{
-\dontrun{
-To get the test statistics for R2(y~x[,v1])
 
-dat=read.table("test_ukbb_thresholds_scaled") (see example file)
+#To get the test statistics for R2(y~x[,v1])
+dat=dat1
 nv=length(dat$V1)
-v1=c(1) 
-output=r2_var(dat,v1,nv)
+v1=c(1)
+r2_var(dat,v1,nv)
 
-r2redux output
+#r2redux output
 
-output$rsq (R2)
-0.03836254
+#output$rsq (R2)
+#0.03836254
 
-output$var (variance of R2) 
-0.0001437583
+#output$var (variance of R2) 
+#0.0001437583
 
-output$r2_based_p (P-value under the null hypothesis, i.e. R2=0)
-1.213645e-10
+#output$r2_based_p (P-value under the null hypothesis, i.e. R2=0)
+#1.213645e-10
 
-output$upper_r2 (upper limit of 95\% CI for R2)
-0.06435214
+#output$upper_r2 (upper limit of 95\% CI for R2)
+#0.06435214
 
-output$lower_r2 (lower limit of 95\% CI for R2)
-0.01763347
+#output$lower_r2 (lower limit of 95\% CI for R2)
+#0.01763347
 
 
 
-To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
+#To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
 
-dat=read.table("test_ukbb_thresholds_scaled") (see example file)
+dat=dat1
 nv=length(dat$V1)
 v1=c(1,2,3) 
-outout=r2_var(dat,v1,nv)
-output
+r2_var(dat,v1,nv)
 
-r2redux output
+#r2redux output
 
-output$rsq (R2)
-0.03917668
+#output$rsq (R2)
+#0.03917668
 
-output$var (variance of R2)
-0.0001499374
+#output$var (variance of R2)
+#0.0001499374
 
-output$r2_based_p (R2 based P-value)
-7.461267e-11
+#output$r2_based_p (R2 based P-value)
+#7.461267e-11
 
-output$upper_r2 (upper limit of 95\% CI for R2)
-0.06538839
+#output$upper_r2 (upper limit of 95\% CI for R2)
+#0.06538839
 
-output$lower_r2 (lower limit of 95\% CI for R2)
-0.01821657
-}
+#output$lower_r2 (lower limit of 95\% CI for R2)
+#0.01821657
 }
 \keyword{R2}
 \keyword{information}

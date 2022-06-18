@@ -6,9 +6,15 @@
 \usage{
 olkin1_2(omat, nv)
 }
-\value{
+\arguments{
+\item{omat}{3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)}
 
+\item{nv}{sample size}
+}
+\value{
+This function will be used as source code
 }
 \description{
 olkin1_2 function
 }
+\keyword{source}

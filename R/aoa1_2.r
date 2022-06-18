@@ -1,9 +1,12 @@
   #' olkin1_2 function
   #' @export
-  #' @param 
-  #' @keywords 
-  #' @return 
-  olkin1_2 = function (omat,nv) {
+  #' @param omat 3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)
+  #' @param nv sample size
+  #' @keywords source  
+  #' @return This function will be used as source code
+ 
+
+ olkin1_2 = function (omat,nv) {
 
      #aova in p158 in Olkin and Finn
   av=array(0,3)

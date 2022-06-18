@@ -12,43 +12,43 @@ olkin_beta_inf(omat, nv)
 \item{nv}{sample size}
 }
 \value{
-this function will generate information (variance-covariance) matrix of beta1 and beta2.Output from the command is the lists of outcomes.
+this function will generate information (variance-covariance) matrix of beta1 and beta2.Lists of outputs are listed as follows.
+\item{info}{2x2 information (variance-covariance) matrix}
+\item{var1}{Variance of beta1}
+\item{var2}{Variance of beta2}
+\item{var1_2}{Variance of difference between beta1 and beta2}
 }
 \description{
 This function derives Information matrix for beta1 and beta2
 where beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1•beta1 + x2•beta2 + e, where y, x1 and x2 are column-standardised
+i.e. y = x1.beta1 + x2.beta2 + e, where y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 }
 \examples{
-\dontrun{
-To get information (variance-covariance) matrix of beta1 and beta2 where 
-beta1 and 2 are regression coefficients from a multiple regression model.
-
-dat=read.table("test_ukbb_thresholds_scaled") (see example files)
+#To get information (variance-covariance) matrix of beta1 and beta2 where 
+#beta1 and 2 are regression coefficients from a multiple regression model.
+dat=dat2
 omat=cor(dat)[1:3,1:3]
-omat
-1.0000000 0.1958636 0.1970060
-0.1958636 1.0000000 0.9981003
-0.1970060 0.9981003 1.0000000
+#omat
+#1.0000000 0.1958636 0.1970060
+#0.1958636 1.0000000 0.9981003
+#0.1970060 0.9981003 1.0000000
 
 nv=length(dat$V1)
-output=olkin_beta_inf(omat,nv) 
-output 
+olkin_beta_inf(omat,nv) 
 
-output$info (2x2 information (variance-covariance) matrix)
-0.2531406 -0.2526212
--0.2526212  0.2530269            
+#output$info (2x2 information (variance-covariance) matrix)
+#0.2531406 -0.2526212
+#-0.2526212  0.2530269            
 
-output$var1 (variance of beta1)
-0.2531406
+#output$var1 (variance of beta1)
+#0.2531406
             
-output$var2 (variance of beta2)
-0.2530269
+#output$var2 (variance of beta2)
+#0.2530269
 
-output$var1_2 (variance of difference between beta1 and beta2)
-1.01141       
-}
+#output$var1_2 (variance of difference between beta1 and beta2)
+#1.01141  
 }
 \references{
 Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.

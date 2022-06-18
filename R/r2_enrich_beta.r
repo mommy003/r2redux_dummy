@@ -3,7 +3,7 @@
 #' This function estimates var((t1/exp) - (t2/(1-exp))), 
 #' where t1 = beta1^2 and t2 = beta2^2, and
 #' beta1 and 2 are regression coefficients from a multiple regression model,
-#' i.e. y = x1•beta1 + x2•beta2 +e, where y, x1 and x2 are column-standardised
+#' i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised
 #' (see Olkin and Finn 1995).
 #' y is N by 1 matrix having the dependent variable, and
 #' x1 is N by 1 matrix having the ith explanatory variables.
@@ -21,60 +21,66 @@
 #' @keywords variance of ratio between beta^2 from a multiple regression
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-#' @return  this function will test the ratio which is significantly different from the expectation.Output from the command is the lists of outcomes.
+#' @return  This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var\[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. Lists of outputs are listed as follows.
+#' \item{beta1_sq}{t1}
+#' \item{beta2_sq}{t2}
+#' \item{var1}{Variance of t1}
+#' \item{var2}{Variance of t2}
+#' \item{var1_2}{Variance of difference between t1 and t2}
+#' \item{cov}{Covariance between t1 and t2}
+#' \item{enrich_p2}{P-value for testing the difference between t1/exp and t2/(1-exp)}
+#' \item{mean_diff}{Difference between t1/exp and t2/(1-exp)}
+#' \item{var_diff}{Variance of difference, t1/exp - t2/(1-exp)}
+#' \item{upper_diff}{Upper limit of 95% CI for the mean difference}
+#' \item{lower_diff}{Lower limit of 95% CI for the mean difference}
 #' @examples
-#' \dontrun{
-#' To get the test statistic for the ratio which is significantly
-#' different from the expectation.
-#' var[(t1/exp) - (t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2.
-#' beta1 and beta2 are regression coefficients from a multiple regression model,
-#' i.e. y = x1Ã¢â‚¬Â¢beta1 + x2Ã¢â‚¬Â¢beta2 +e, where y, x1 and x2 are column-standardised
+#' #To get the test statistic for the ratio which is significantly
+#' #different from the expectation.
+#' #var[(t1/exp) - (t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2.
+#' #beta1 and beta2 are regression coefficients from a multiple regression model,
+#' #i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised.
 #'
-#' dat=read.table("test_ukbb_enrichment_choles") (see example file)
+#' dat=dat2
 #' nv=length(dat$V1)
 #' v1=c(1)
 #' v2=c(2)
 #' expected_ratio=0.04
-#' output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
-#' output
+#' r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
 #'
-#' r2redux output
+#' #r2redux output
 #'
-#' output$beta1_sq (t1)
-#' 0.01118301
+#' #output$beta1_sq (t1)
+#' #0.01118301
 #' 
-#' output$beta2_sq (t2)
-#' 0.004980285
+#' #output$beta2_sq (t2)
+#' #0.004980285
 #' 
-#' output$var1 (variance of t1)
-#' 7.072931e-05
+#' #output$var1 (variance of t1)
+#' #7.072931e-05
 #' 
-#' output$var2 (variance of t2)
+#' #output$var2 (variance of t2)
 #' 3.161929e-05
 #' 
-#' output$var1_2 (variance of difference between t1 and t2)
-#' 0.000162113
+#' #output$var1_2 (variance of difference between t1 and t2)
+#' #0.000162113
 #' 
-#' output$cov (covariance between t1 and t2)
-#' -2.988221e-05
+#' #output$cov (covariance between t1 and t2)
+#' #-2.988221e-05
 #' 
-#' output$enrich_p2 (p-value for testing the difference between t1/exp and t2/(1-exp))
-#' 0.1997805
+#' #output$enrich_p2 (p-value for testing the difference between t1/exp and t2/(1-exp))
+#' #0.1997805
 #' 
-#' output$mean_diff (difference between t1/exp and t2/(1-exp))
+#' #output$mean_diff (difference between t1/exp and t2/(1-exp))
 #' 0.2743874
 #' 
-#' output$var_diff (variance of difference, t1/exp - t2/(1-exp))
-#' 0.04579649
+#' #output$var_diff (variance of difference, t1/exp - t2/(1-exp))
+#' #0.04579649
 #' 
-#' output$upper_diff (upper limit of 95% CI for the mean difference)
-#' 0.6938296
+#' #output$upper_diff (upper limit of 95% CI for the mean difference)
+#' #0.6938296
 #' 
-#' output$lower_diff (lower limit of 95% CI for the mean difference)
-#' -0.1450549
-#' }
-
-
+#' #output$lower_diff (lower limit of 95% CI for the mean difference)
+#' #-0.1450549
 
 
 r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
