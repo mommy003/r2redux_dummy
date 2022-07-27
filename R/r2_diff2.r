@@ -45,10 +45,10 @@
   #' #0.03881135
   #' 
   #' #output$var1 (variance of R2_1)
-  #' #0.0001437583
+  #' #0.0001436128
   #' 
   #' #output$var2 (variance of R2_2)
-  #' #0.0001452828
+  #' #0.0001451358
   #' 
   #' #output$var_diff (variance of difference between R2_1 and R2_2)
   #' #5.678517e-07
@@ -87,25 +87,25 @@
   #' #0.03836254
   #'
   #' #output$var1 (variance of R2_1)
-  #' #0.0001475195
+  #' #0.0001473686
   #' 
   #' #output$var2 (variance of R2_2)
-  #' #0.0001437583
+  #' #0.0001436128
   #' 
   #' #output$var_diff (variance of difference between R2_1 and R2_2)
   #' #2.321425e-06
   #' 
   #' #output$r2_based_p (p-value for significant difference between R2_1 and R2_2)
-  #' #0.4369177
+  #' #0.4366883
   #' 
   #' #output$mean_diff (differences between R2_1 and R2_2)
   #' #0.0006042383
   #' 
   #' #output$upper_diff (upper limit of 95% CI for the difference)
-  #' #0.004887989
+  #' #0.00488788
   #' 
   #' #output$lower_diff (lower limit of 95% CI for the difference)
-  #' #-0.0005574975
+  #' #-0.0005576171
 
  
   

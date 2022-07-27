@@ -36,12 +36,6 @@
 #' v2=c(2)
 #' output=r2_diff(dat,v1,v2,nv)
 #' output
-#' dat=dat1
-#' nv=length(dat$V1)
-#' v1=c(1)
-#' v2=c(2)
-#' output=r_diff(dat,v1,v2,nv)
-#' output
 #' 
 #' #r2redux output
 #' 
@@ -75,7 +69,42 @@
 #' #output$lower_diff (lower limit of 95% CI for the difference)
 #' #-0.004888417
 #' 
-
+#' 
+#' #To get the test statistics for the difference between R(y~x[,v1]+[,v2]) and 
+#' #R(y~x[,v2]). (here R_1=R(y~x[,v1]+x[,v2]) and R_2=R(y~x[,v1]))
+#' 
+#' nv=length(dat$V1)
+#' v1=c(1,2)
+#' v2=c(2)
+#' output=r2_diff(dat,v1,v2,nv)
+#' output
+#' 
+#' #output$rsq1
+#' #0.03896678
+#'
+#' #output$rsq2
+#' #0.03881135
+#'
+#' #output$var1
+#' #0.0001473686
+#'
+#' #output$var2
+#' #0.0001451358
+#'
+#' #output$var_diff
+#' #5.974193e-07
+#'
+#' #output$r2_based_p
+#' #0.6933505
+#'
+#' #output$mean_diff
+#' #0.0001554339
+#'
+#' #output$upper_diff
+#' #0.002355053
+#'
+#' #output$lower_diff
+#' #-0.0003955781
 
 
 r_diff = function (dat,v1,v2,nv) {
