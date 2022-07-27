@@ -13,16 +13,17 @@ r2_diff(dat, v1, v2, nv)
 
 \item{v2}{This can be set as v2=c(2), v2=c(3), v2=c(1,3) or v2=c(3,4)}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
 }
 \value{
-This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2]))). Lists of outputs are listed as follows.
+This function will estimate significant difference between two PGS (either dependent or independent and joint or single). To get the test statistics for the difference between R2(y~x[,v1]) and R2(y~x[,v2]). (here we define R2_1=R2(y~x[,v1])) and R2_2=R2(y~x[,v2]))). The outputs are listed as follows.
 \item{rsq1}{R2_1}
 \item{rsq2}{R2_2}
 \item{var1}{Variance of R2_1}
 \item{var2}{variance of R2_2}
 \item{var_diff}{Variance of difference between R2_1 and R2_2}
-\item{r2_based_p}{P-value for significant difference between R2_1 and R2_2}
+\item{r2_based_p}{two tailed P-value for significant difference between R2_1 and R2_2}
+\item{r2_based_p_one_tail}{one tailed P-value for significant difference}
 \item{mean_diff}{Differences between R2_1 and R2_2}
 \item{upper_diff}{Upper limit of 95\% CI for the difference}
 \item{lower_diff}{Lower limit of 95\% CI for the difference}
@@ -43,7 +44,8 @@ dat=dat1
 nv=length(dat$V1)
 v1=c(1)
 v2=c(2)
-r2_diff(dat,v1,v2,nv)
+output=r2_diff(dat,v1,v2,nv)
+output
 
 #r2redux output
 
@@ -62,8 +64,11 @@ r2_diff(dat,v1,v2,nv)
 #output$var_diff (variance of difference between R2_1 and R2_2)
 #5.678517e-07
 
-#output$r2_based_p (p-value for significant difference between R2_1 and R2_2)
+#output$r2_based_p (two tailed p-value for significant difference between R2_1 and R2_2)
 #0.5514562
+
+#output$r2_based_p_one_tail(one tailed p-value for significant difference)
+#0.2757281
 
 #output$mean_diff (differences between R2_1 and R2_2)
 #-0.0004488044

@@ -9,7 +9,7 @@ olkin12_34(omat, nv)
 \arguments{
 \item{omat}{3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
 }
 \value{
 This function will be used as source code

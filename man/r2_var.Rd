@@ -11,15 +11,15 @@ r2_var(dat, v1, nv)
 
 \item{v1}{This can be set as v1=c(1), v1=c(1,2) or possibly with more values}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
 }
 \value{
-This function will test the null hypothesis for R2. To get the test statistics for R2(y~x[,v1])Lists of outputs are listed as follows.
+This function will test the null hypothesis for R2. To get the test statistics for R2(y~x[,v1]). The outputs are listed as follows.
 \item{rsq}{R2}
 \item{var}{Variance of R2}
 \item{r2_based_p}{P-value under the null hypothesis, i.e. R2=0}
-\item{upper_r2}{upper limit of 95\% CI for R2}
-\item{lower_r2}{lower limit of 95\% CI for R2}
+\item{upper_r2}{Upper limit of 95\% CI for R2}
+\item{lower_r2}{Lower limit of 95\% CI for R2}
 }
 \description{
 This function estimates var(R2(y~x[,v1]))
@@ -36,7 +36,8 @@ v1 indicates the ith column in the x matrix
 dat=dat1
 nv=length(dat$V1)
 v1=c(1)
-r2_var(dat,v1,nv)
+output=r2_var(dat,v1,nv)
+output
 
 #r2redux output
 
@@ -54,7 +55,6 @@ r2_var(dat,v1,nv)
 
 #output$lower_r2 (lower limit of 95\% CI for R2)
 #0.01763347
-
 
 
 #To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])

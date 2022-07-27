@@ -11,14 +11,14 @@ r2_enrich_beta(dat, v1, v2, nv, exp1)
 
 \item{v1}{These can be set as v1=1, v1=2, v1=3  or any value between 1 - M based on combination}
 
-\item{v2}{These can be set as v2=2, v2=1, v2=2, or any value between 1 - M based on combination}
+\item{v2}{These can be set as v2=1, v2=2, v2=3, or any value between 1 - M based on combination}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
 
 \item{exp1}{The expectation of the ratio (e.g. ratio of # SNPs in genomic partitioning)}
 }
 \value{
-This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. Lists of outputs are listed as follows.
+This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
 \item{beta1_sq}{t1}
 \item{beta2_sq}{t2}
 \item{var1}{Variance of t1}
@@ -56,7 +56,8 @@ nv=length(dat$V1)
 v1=c(1)
 v2=c(2)
 expected_ratio=0.04
-r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+output
 
 #r2redux output
 
@@ -80,6 +81,9 @@ r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
 
 #output$enrich_p2 (p-value for testing the difference between t1/exp and t2/(1-exp))
 #0.1997805
+
+#output$enrich_p_one_tail(p-value for testing the difference between t1/exp and t2/(1-exp))
+#0.09989025
 
 #output$mean_diff (difference between t1/exp and t2/(1-exp))
 0.2743874

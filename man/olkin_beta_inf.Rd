@@ -9,10 +9,10 @@ olkin_beta_inf(omat, nv)
 \arguments{
 \item{omat}{3 by 3 matrix having the correlation coefficients between y, x1 and x2, i.e. omat=cor(dat) where dat is N by 3 matrix having variables in the order of cbind (y,x1,x2)}
 
-\item{nv}{sample size}
+\item{nv}{Sample size}
 }
 \value{
-this function will generate information (variance-covariance) matrix of beta1 and beta2.Lists of outputs are listed as follows.
+This function will generate information (variance-covariance) matrix of beta1 and beta2.The outputs are listed as follows.
 \item{info}{2x2 information (variance-covariance) matrix}
 \item{var1}{Variance of beta1}
 \item{var2}{Variance of beta2}
@@ -21,13 +21,13 @@ this function will generate information (variance-covariance) matrix of beta1 an
 \description{
 This function derives Information matrix for beta1 and beta2
 where beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1.beta1 + x2.beta2 + e, where y, x1 and x2 are column-standardised
+i.e. y = x1 * beta1 + x2 * beta2 + e, where y, x1 and x2 are column-standardised
 (see Olkin and Finn 1995).
 }
 \examples{
 #To get information (variance-covariance) matrix of beta1 and beta2 where 
 #beta1 and 2 are regression coefficients from a multiple regression model.
-dat=dat2
+dat=dat1
 omat=cor(dat)[1:3,1:3]
 #omat
 #1.0000000 0.1958636 0.1970060
@@ -35,7 +35,8 @@ omat=cor(dat)[1:3,1:3]
 #0.1970060 0.9981003 1.0000000
 
 nv=length(dat$V1)
-olkin_beta_inf(omat,nv) 
+output=olkin_beta_inf(omat,nv)
+output 
 
 #output$info (2x2 information (variance-covariance) matrix)
 #0.2531406 -0.2526212

@@ -20,18 +20,19 @@
   #' @examples
   #' #To get the transformed R2
   #' 
-  #' cc_trf(0.06, 0.002, 0.05, 0.05)
+  #' output=cc_trf(0.06, 0.002, 0.05, 0.05)
+  #' output
   #'
-  #' #output$R2l (transformed R2 to the liability scale)
+  #' #output$R2l (transformed R2 on the liability scale)
   #' #0.2679337
   #'
-  #' #output$sel (transformed se to the liability scale)
+  #' #output$sel (transformed se on the liability scale)
   #' #0.008931123
   #'
-  #' #output$R2O (transformed R2 to the observed scale)
+  #' #output$R2O (transformed R2 on the observed scale)
   #' #0.01343616
   #'
-  #' #output$seO (transformed se to the observed scale)
+  #' #output$seO (transformed se on the observed scale)
   #' #0.000447872
   
 

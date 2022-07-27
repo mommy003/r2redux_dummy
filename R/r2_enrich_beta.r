@@ -15,13 +15,13 @@
 #' Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 #' @param dat N by (M+1) matrix having variables in the order of cbind(y,x)
 #' @param v1 These can be set as v1=1, v1=2, v1=3  or any value between 1 - M based on combination
-#' @param v2 These can be set as v2=2, v2=1, v2=2, or any value between 1 - M based on combination 
-#' @param nv sample size
+#' @param v2 These can be set as v2=1, v2=2, v2=3, or any value between 1 - M based on combination 
+#' @param nv Sample size
 #' @param exp1 The expectation of the ratio (e.g. ratio of # SNPs in genomic partitioning)
 #' @keywords variance of ratio between beta^2 from a multiple regression
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-#' @return  This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var\[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. Lists of outputs are listed as follows.
+#' @return  This function will test the ratio which is significantly different from the expectation.To get the test statistic for the ratio which is significantly different from the expectation. var\[(t1/exp)-(t2/(1-exp))], where t1 = beta1^2 and t2 = beta2^2. beta1 and beta2 are regression coefficients from a multiple regression model, i.e. y = x1.beta1 + x2.beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
 #' \item{beta1_sq}{t1}
 #' \item{beta2_sq}{t2}
 #' \item{var1}{Variance of t1}
@@ -45,8 +45,9 @@
 #' v1=c(1)
 #' v2=c(2)
 #' expected_ratio=0.04
-#' r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
-#'
+#' output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
+#' output
+#' 
 #' #r2redux output
 #'
 #' #output$beta1_sq (t1)
@@ -69,6 +70,9 @@
 #' 
 #' #output$enrich_p2 (p-value for testing the difference between t1/exp and t2/(1-exp))
 #' #0.1997805
+#'
+#' #output$enrich_p_one_tail(p-value for testing the difference between t1/exp and t2/(1-exp))
+#' #0.09989025
 #' 
 #' #output$mean_diff (difference between t1/exp and t2/(1-exp))
 #' 0.2743874
@@ -84,22 +88,11 @@
 
 
 r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
-  #source("aoa12_1.r")
-  #source("aoa12_13.r")
-  #source("aoa1_2.r")
-  #source("aoa12_3.r")
-  #source("aoa12_34.r")
-  #  source("aoa_beta1_2.r")
+  
   
   dat=scale(dat);omat=cor(dat)
-  
-  m1=lm(dat[,1]~dat[,(1+v1)])
-  s1=summary(m1)
-  m2=lm(dat[,1]~dat[,(1+v2)])
-  s2=summary(m2)
   m3=lm(dat[,1]~dat[,1+v1]+dat[,1+v2])
   s3=summary(m3)
-  
   ord=c(1,(1+v1),(1+v2))
   aoa=olkin_beta1_2(omat[ord,ord],nv)
   var1=aoa$var1
@@ -107,15 +100,11 @@ r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
   var1_2=aoa$var1_2
   
   cov=-0.5*(var1_2-var1-var2)
-  
   dvr1=s3$coefficients[2,1]^2
   dvr2=s3$coefficients[3,1]^2
-  #dvr1=s3$coefficients[2,1]
-  #dvr2=s3$coefficients[3,1]
   
   #enrichment p-value
   dvrt=dvr1+dvr2; ratio1=dvr1/dvrt; ratio2=dvr2/dvrt
-  
   vart=var1+var2+2*cov
   covt1=var1+cov
   covt2=var2+cov
@@ -123,32 +112,33 @@ r2_enrich_beta = function (dat,v1,v2,nv,exp1) {
   ratio1_var=(ratio1^2)*(var1/dvr1^2+vart/dvrt^2-2*covt1/(dvr1*dvrt))
   ratio2_var=(ratio2^2)*(var2/dvr2^2+vart/dvrt^2-2*covt2/(dvr2*dvrt))
   
+  
   chisq1=((ratio1-exp1)^2)/ratio1_var
   p3=pchisq(chisq1,1,lower.tail=F)
+  
   
   #95% CI
   uci=ratio1+1.96*ratio1_var^.5
   lci=ratio1-1.96*ratio1_var^.5
+  
   
   #alternative
   dvr3=dvr1/exp1-dvr2/(1-exp1)
   var_dvr3=var1/exp1^2+var2/(1-exp1)^2-2*cov/(exp1*(1-exp1))
   chi_dum=dvr3^2/var_dvr3
   p4=pchisq(chi_dum,1,lower.tail=F)
+  
   #95% CI
   uci2=dvr3+1.96*var_dvr3^.5
   lci2=dvr3-1.96*var_dvr3^.5
   
-  #z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio1=ratio1,ratio2=ratio2,ratio1_var=ratio1_var,ratio2_var=ratio2_var,enrich_p=p3,upper_ratio1=uci,lower_ratio1=lci)
-  #z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,enrich_p=p3,upper_ratio=uci,lower_ratio=lci)
-  #enrich_p=p3 excleded from Z list
-
-  z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,upper_ratio=uci,lower_ratio=lci,enrich_p2=p4,mean_diff=dvr3,var_diff=var_dvr3,upper_diff=uci2,lower_diff=lci2)
+  
+  
+  z=list(var1=var1,var2=var2,var1_2=var1_2,beta1_sq=dvr1,beta2_sq=dvr2,cov=cov,ratio=ratio1,ratio_var=ratio1_var,upper_ratio=uci,lower_ratio=lci,enrich_p=p4,enrich_p_one_tail=p4/2,mean_diff=dvr3,var_diff=var_dvr3,upper_diff=uci2,lower_diff=lci2)
+  #NOTE: enrich_p=p4 due to normal distribution
   return(z)
   
   
 }
 
-
-
-
+ 
