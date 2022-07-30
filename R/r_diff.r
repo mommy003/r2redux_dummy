@@ -107,7 +107,9 @@
 #' #-0.0003955781
 
 
+
 r_diff = function (dat,v1,v2,nv) {
+  
   
   dat=scale(dat);omat=cor(dat)
   
@@ -289,5 +291,4 @@ if (length(v1)==1 & length(v2)==1) {
   }
   
 }
-
 
