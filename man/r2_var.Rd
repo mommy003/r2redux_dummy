@@ -45,16 +45,16 @@ output
 #0.03836254
 
 #output$var (variance of R2) 
-#0.0001437583
+#0.0001436128
 
 #output$r2_based_p (P-value under the null hypothesis, i.e. R2=0)
-#1.213645e-10
+#1.188162e-10
 
 #output$upper_r2 (upper limit of 95\% CI for R2)
-#0.06435214
+#0.06433782
 
 #output$lower_r2 (lower limit of 95\% CI for R2)
-#0.01763347
+#0.01764252
 
 
 #To get the test statistic for R2(y~x[,v1]+x[,v2]+x[,v3])
@@ -67,19 +67,19 @@ r2_var(dat,v1,nv)
 #r2redux output
 
 #output$rsq (R2)
-#0.03917668
+#0.03836254
 
 #output$var (variance of R2)
-#0.0001499374
+#0.0001436128
 
 #output$r2_based_p (R2 based P-value)
-#7.461267e-11
+#1.188162e-10
 
 #output$upper_r2 (upper limit of 95\% CI for R2)
-#0.06538839
+#0.06433782
 
 #output$lower_r2 (lower limit of 95\% CI for R2)
-#0.01821657
+#0.01764252
 }
 \keyword{R2}
 \keyword{information}
