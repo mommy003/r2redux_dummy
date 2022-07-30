@@ -44,7 +44,7 @@ dat=dat1
 nv=length(dat$V1)
 v1=c(1)
 v2=c(2)
-output=r2_diff(dat,v1,v2,nv)
+output=r_diff(dat,v1,v2,nv)
 output
 
 #r2redux output
@@ -86,7 +86,7 @@ output
 nv=length(dat$V1)
 v1=c(1,2)
 v2=c(2)
-output=r2_diff(dat,v1,v2,nv)
+output=r_diff(dat,v1,v2,nv)
 output
 
 #output$rsq1
