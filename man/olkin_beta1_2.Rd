@@ -14,9 +14,9 @@ olkin_beta1_2(omat, nv)
 \value{
 This function will give information (variance-covariance) matrix of beta1^2 and beta2^2.To get information (variance-covariance) matrix of beta1^2 and beta2^2. Where beta1 and beta2 are regression coefficients from a multiple regression model. The outputs are listed as follows.
 \item{info}{2x2 information (variance-covariance) matrix}
-\item{var1}{Variance of beta1^2}
-\item{var2}{Variance of beta2^2}
-\item{var1_2}{Variance of difference between beta1^2 and beta2^2}
+\item{var1}{Variance of beta1_2}
+\item{var2}{Variance of beta2_2}
+\item{var1_2}{Variance of difference between beta1_2 and beta2_2}
 }
 \description{
 This function derives Information matrix for beta1^2 and beta2^2
@@ -42,17 +42,17 @@ output
 #0.04146276 0.08158261
 #0.08158261 0.16111124             
 
-#output$var1 (variance of beta1^2)
+#output$var1 (variance of beta1_2)
 #0.04146276 
             
-#output$var2 (variance of beta2^2)
+#output$var2 (variance of beta2_2)
 #0.1611112
 
-#output$var1_2 (variance of difference between beta1^2 and beta2^2)
+#output$var1_2 (variance of difference between beta1_2 and beta2_2)
 #0.03940878
 }
 \references{
-Olkin, I. and J.D. Finn, Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
+Olkin, I. and Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 }
 \keyword{context}
 \keyword{correlation}
