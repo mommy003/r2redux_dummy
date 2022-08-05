@@ -21,7 +21,7 @@ This function will give information (variance-covariance) matrix of beta1^2 and 
 \description{
 This function derives Information matrix for beta1^2 and beta2^2
 where beta1 and 2 are regression coefficients from a multiple regression model,
-i.e. y = x1•beta1 + x2•beta2 + e, where y, x1 and x2 are column-standardised,
+i.e. y = x1 * beta1 + x2 * beta2 + e, where y, x1 and x2 are column-standardised,
 (i.e. in the context of correlation coefficients,see Olkin and Finn 1995).
 }
 \examples{

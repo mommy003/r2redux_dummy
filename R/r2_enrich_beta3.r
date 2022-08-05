@@ -3,7 +3,7 @@
 #' This function estimates var(beta1^2/R^2), 
 #' beta1 and R^2 are regression coefficient and the coefficient
 #' of determination from a multiple regression model,
-#' i.e. y = x1*beta1 + x2*beta2 +e, where y, x1 and x2 are column-standardised
+#' i.e. y = x1 * beta1 + x2 * beta2 +e, where y, x1 and x2 are column-standardised
 #' (see Olkin and Finn 1995).
 #' y is N by 1 matrix having the dependent variable, and
 #' x1 is N by 1 matrix having the ith explanatory variables.
@@ -20,7 +20,7 @@
 #' @keywords variance of ratio between beta^2 from a multiple regression
 #' @export
 #' @importFrom stats D cor dnorm lm logLik pchisq qchisq qnorm
-#' @return  This function will estimate var(beta1^2/R^2), beta1 and R^2 are regression coefficient and the coefficient of determination from a multiple regression model, i.e. y = x1*beta1 + x2*beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
+#' @return  This function will estimate var(beta1^2/R^2), beta1 and R^2 are regression coefficient and the coefficient of determination from a multiple regression model, i.e. y = x1 * beta1 + x2 * beta2 +e, where y, x1 and x2 are column-standardised. The outputs are listed as follows.
 #' \item{beta1_sq}{beta1_sq}
 #' \item{beta2_sq}{beta2_sq}
 #' \item{ratio1}{beta1_sq/R^2}
@@ -41,7 +41,7 @@
 #' #var (beta1^2/R^2), where 
 #' #beta1^2 and R^2 are regression coefficients and the 
 #' #coefficient of dterminationfrom a multiple regression model,
-#' #i.e. y = x1*beta1 + x2*beta2 +e, where y, x1 and x2 are 
+#' #i.e. y = x1 * beta1 + x2 * beta2 +e, where y, x1 and x2 are 
 #' #column-standardised.
 #'
 #' dat=dat2
@@ -92,12 +92,12 @@
 #' #is significantly different from exp1)
 #' #0.07958459
 #' 
-#' #output$enrich_p2 (P-value for beta2_sq/R2 is significantly
-#' #different from (1-exp1))
+#' #output$enrich_p2 (two tailed P-value for beta2_sq/R2 is 
+#' #significantly different from (1-exp1))
 #' #0.000232035
 #' 
-#' #output$enrich_p2_one_tail (one tailed P-value for beta2_sq/R2 is 
-#' #significantly different from (1-exp1))
+#' #output$enrich_p2_one_tail (one tailed P-value for beta2_sq/R2  
+#' #is significantly different from (1-exp1))
 #' #0.0001160175
 
 
