@@ -139,13 +139,6 @@ output=r2_enrich_beta(dat,v1,v2,nv,expected_ratio)
 - output$enrich_p2_one_tail (one tailed P-value for beta2^2/R2 is significantly different from (1-exp1))
 - 0.0001160175
 
-```
-1000439  1000439 -9 1790842 1109280 -3.95616e-05
-1000516  1000516 -9 1793838 1112920 -2.716e-05
-1000674  1000674 -9 1791120 1109288 -4.56456e-05
-1000893  1000893 -9 1792202 1109679 -4.70856e-05
-```
-
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 2. Momin, M.M., Lee, S., Wray, N.R. and Lee S.h. 2022. Significance tests for R2 of out-of-sample prediction using polygenic scores. bioRxiv.
